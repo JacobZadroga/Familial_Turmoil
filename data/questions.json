@@ -1,0 +1,33 @@
+[{
+  "question": "Name something that's hard for a man to admit hes not very good at?",
+  "answers": [
+    {"answer": "sex", "total": 38},
+    {"answer": "driving", "total": 18},
+    {"answer": "fixing things", "total": 13},
+    {"answer": "sports", "total": 12},
+    {"answer": "cooking", "total": 8},
+    {"answer": "finances", "total": 3},
+    {"answer": "listening", "total": 2},
+    {"answer": "cleaning", "total": 2}
+  ]
+},
+{
+  "question": "Name something people turn on to help them stay up all night?",
+  "answers": [
+    {"answer": "tv", "total": 41},
+    {"answer": "the lights", "total": 34},
+    {"answer": "music", "total": 16},
+    {"answer": "coffee maker", "total": 7}
+  ]
+},
+{
+  "question": "Name something that's round and white?",
+  "answers": [
+    {"answer": "golf ball", "total": 22},
+    {"answer": "snowball", "total": 22},
+    {"answer": "pearl", "total": 6},
+    {"answer": "cotton ball", "total": 5},
+    {"answer": "marshmallow", "total": 5},
+    {"answer": "baseball", "total": 5}
+  ]
+}]

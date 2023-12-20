@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Game</title>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    /* Set additional styling options for the columns */
+    .column {
+    float: left;
+    }
+
+    /* Set width length for the left, right and middle columns */
+    .left {
+    width: 20%;
+    }
+
+    .middle {
+    width: 60%;
+    }
+
+    .right {
+    width: 20%;
+    }
+
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+<body style="background-color:DodgerBlue;text-align:center">
+    <img src="../static/images/logo.png">
+    <h1>Familial Turmoil</h1>
+
+
+    <div class="row">
+        <div class="column left">
+            <h2>{{teamOneName}}</h2>
+            <p>Data..</p>
+        </div>
+        <div class="column middle">
+            <p> </p>
+        </div>
+        <div class="column right">
+            <h2>{{teamTwoName}}</h2>
+            <p>Data..</p>
+        </div>
+    </div>
+</body>
+</html>
