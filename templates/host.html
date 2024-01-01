@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Host</title>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    /* Set additional styling options for the columns */
+    .column {
+        float: left;
+        overflow: hidden;
+    }
+
+    /* Set width length for the left, right and middle columns */
+    .left {
+        width: 20%;
+    }
+
+    .middle {
+        width: 60%;
+    }
+
+    .right {
+        width: 20%;
+    }
+
+    .answerpadding {
+        width: 20%;
+        background-color: DarkBlue;
+    }
+
+    .teamname {
+        font-family: Trebuchet MS;
+        font-size: 1.5vw;
+    }
+
+    .teamscore {
+        font-family: Trebuchet MS;
+        font-size: 4vw;
+        width: 15vw;
+        font-weight: bold;
+        margin: 0 2vw;
+        text-align: center;
+    }
+
+    .bankscore {
+        background-color: DarkBlue;
+        height: 15vh;
+        font-family: Trebuchet MS;
+        font-size: 5vw;
+        color: White;
+        font-weight: bold;
+        display: flex;
+        justify-content: center; /* Align horizontal */
+        align-items: center;
+    }
+
+    .teamX {
+        height: 5vw;
+        font-size: 3vw;
+        font-family: Trebuchet MS;
+        color: Black;
+        font-weight: bold;
+        display: flex;
+        justify-content: center; /* Align horizontal */
+        align-items: center;s
+    }
+
+    .question {
+        height: 9vh;
+        font-family: Trebuchet MS;
+        text-size-adjust: auto;
+        font-weight: bold;
+        display: flex;
+        justify-content: center; /* Align horizontal */
+        align-items: center;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        background-color: DarkBlue;
+        padding: 12px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(0, 0, 0, 1);
+        height: 13vh;
+        font-family: Trebuchet MS;
+        font-weight: bold;
+        font-size: 3.5vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .anscount {
+        background-color: LightSlateGray;
+        height: 13vh;
+        width: 13vh;
+        color: Black;
+        font-weight: bold;
+    }
+
+    .qbutton {
+        background-color: LightSlateGray;
+        height: 7vh;
+        color: Black;
+        width: 13vh;
+        font-weight: bold;
+        margin: 1vw 1vw;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    </style>
+
+    <script>
+        var audio = new Audio('../static/audio/x.mp3');
+
+        function setX(team, type) {
+
+            console.log("Team " + (team+1) + "'s X will be modified with " + type);
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../addX?team=" + team + "&type=" + type);
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+            if(type == 'add') {
+                audio.play()
+            }
+        }
+
+        function addBankToTeam(team) {
+            console.log("Adding bank to team " + (team+1));
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../addBankToScore?team=" + team);
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+        }
+
+        function setTeamScore(team) {
+            var score = document.getElementById("t" + (team+1) + "score").value
+            console.log("Setting team " + (team+1) + "'s score to " + score);
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../setTeamScore?team=" + team + "&score=" + score);
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+        }
+
+        function setBank() {
+            var bank = document.getElementById("bank").value
+            console.log("Setting bank to " + bank);
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../setBank?bank=" + bank);
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+        }
+
+        function revealAnswer(answer) {
+            console.log("Revealing answer " + (answer+1));
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../revealAnswer?a=" + answer);
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+        }
+
+        function progressQ() {
+            console.log("progressing Question");
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../progressQ");
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+        }
+
+        function regressQ() {
+            console.log("regressing Question");
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../regressQ");
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    updateFromServer();
+                }
+            }
+        }
+
+        function updateFromServer() {
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../hoststate");
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+
+                    console.log(response);
+                    document.getElementById("question").innerHTML = response.question
+                    document.getElementById("bank").value = response.bank
+
+                    document.getElementById("t1score").value = response.teamOneScore
+                    document.getElementById("t2score").value = response.teamTwoScore
+
+                    document.getElementById("t1x").innerHTML = response.teamOneX
+                    document.getElementById("t2x").innerHTML = response.teamTwoX
+
+                    var numOfAnswers = response.answers.length;
+
+                    for(let i = 1; i <= numOfAnswers; i++) {
+                        document.getElementById("ans" + i).innerHTML = response.answers[i-1].answer + " | " + response.answers[i-1].count
+                        if(response.answers[i-1].exposed == true) {
+                            document.getElementById("ansb" + i).style.visibility = "hidden";
+                        } else {
+                            document.getElementById("ansb" + i).style.visibility = "visible";
+                        }
+                    }
+
+                    //For the rest of the answers we want to display nothing
+                    for(let i = numOfAnswers + 1; i <= 8; i++) {
+                        document.getElementById("ans" + i).innerHTML = "";
+                        document.getElementById("ansb" + i).style.visibility = "hidden";
+                    }
+                }
+            }
+        }
+
+        updateFromServer();
+    </script>
+</head>
+<body style="background-color:DodgerBlue;text-align:center;height: 100%;overflow-y: hidden;">
+
+    <div class="question">
+        <input onclick = "regressQ()" type="button" class="qbutton" value="prevQ">
+        <div id="question">Question Here</div>
+        <input onclick = "progressQ()" type="button" class="qbutton" value="nextQ">
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="column left">
+            <div class="question">
+                <input onclick = "setX(0, 'subtract')" type="button" class="qbutton" value="\/">
+                <div id="t1x" class="teamX">0</div>
+                <input onclick = "setX(0, 'add')" type="button" class="qbutton" value="/\">
+            </div>
+            <div class="teamname">{{teamOneName}}</div>
+            <input id="t1score" type="number" class="teamscore" value="0">
+            <input onclick = "setTeamScore(0)" type="button" class="qbutton" value="setT1Score">
+            <input onclick = "updateFromServer()" type="button" class="qbutton" value="serverUpdate">
+        </div>
+        <div class="column middle">
+            <div class="bankscore">
+                <input onclick="addBankToTeam(0)" type="button" class="anscount" value="teamOne">
+                <input id="bank" type="number" class="teamscore" value="0">
+                <input onclick="addBankToTeam(1)" type="button" class="anscount" value="teamTwo">
+            </div>
+
+            <br>
+
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div id="ans1">1</div>
+                    <input id="ansb1" onclick = "revealAnswer(0)" type="button" class="anscount" value="show">
+                </div>
+                <div class="grid-item">
+                    <div id="ans5">5</div>
+                    <input id="ansb5" onclick = "revealAnswer(4)" type="button" class="anscount" value="show">
+                </div>
+                <div class="grid-item">
+                    <input id="ansb2" onclick = "revealAnswer(1)" type="button" class="anscount" value="show">
+                    <div id="ans2">2</div>
+                </div>
+                <div class="grid-item">
+                    <input id="ansb6" onclick = "revealAnswer(5)" type="button" class="anscount" value="show">
+                    <div id="ans6">6</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans3">3</div>
+                    <input id="ansb3" onclick = "revealAnswer(2)" type="button" class="anscount" value="show">
+                </div>
+                <div class="grid-item">
+                    <div id="ans7">7</div>
+                    <input id="ansb7" onclick = "revealAnswer(6)" type="button" class="anscount" value="show">
+                </div>
+                <div class="grid-item">
+                    <input id="ansb4" onclick = "revealAnswer(3)" type="button" class="anscount" value="show">
+                    <div id="ans4">4</div>
+                </div>
+                <div class="grid-item">
+                    <input id="ansb8" onclick = "revealAnswer(7)" type="button" class="anscount" value="show">
+                    <div id="ans8">8</div>
+                </div>
+            </div>
+        </div>
+        <div class="column right">
+            <div class="question">
+                <input onclick = "setX(1, 'subtract')" type="button" class="qbutton" value="\/">
+                <div id="t2x" class="teamX">0</div>
+                <input onclick = "setX(1, 'add')" type="button" class="qbutton" value="/\">
+            </div>
+            <div class="teamname">{{teamTwoName}}</div>
+            <input id="t2score" type="number" class="teamscore" value="0">
+            <input onclick = "setTeamScore(1)" type="button" class="qbutton" value="setT2Score">
+            <input onclick = "setBank()" type="button" class="qbutton" value="setBank">
+        </div>
+    </div>
+</body>
+</html>

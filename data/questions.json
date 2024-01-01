@@ -1,33 +1,245 @@
 [{
-  "question": "Name something that's hard for a man to admit hes not very good at?",
+  "question": "Give me the name of someone who would lose massively in poker",
   "answers": [
-    {"answer": "sex", "total": 38},
-    {"answer": "driving", "total": 18},
-    {"answer": "fixing things", "total": 13},
-    {"answer": "sports", "total": 12},
-    {"answer": "cooking", "total": 8},
-    {"answer": "finances", "total": 3},
-    {"answer": "listening", "total": 2},
-    {"answer": "cleaning", "total": 2}
+    {"answer": "Jared", "total": 34},
+    {"answer": "Brian", "total": 21},
+    {"answer": "Jack", "total": 18},
+    {"answer": "Christian", "total": 13},
+    {"answer": "Jacob", "total": 8},
+    {"answer": "Tyler", "total": 6}
+  ]
+}, {
+  "question": "Name a place you might pick up a date who isn't interested in a serious relationship?",
+  "answers": [
+    {"answer": "bar", "total": 31},
+    {"answer": "club", "total": 19},
+    {"answer": "tinder", "total": 18},
+    {"answer": "college", "total": 13},
+    {"answer": "party", "total": 10},
+    {"answer": "the mall", "total": 2}
   ]
 },
 {
-  "question": "Name something people turn on to help them stay up all night?",
+  "question": "We asked 100 women. Name a sport you'd love to be in the locker room for shower time",
   "answers": [
-    {"answer": "tv", "total": 41},
-    {"answer": "the lights", "total": 34},
-    {"answer": "music", "total": 16},
-    {"answer": "coffee maker", "total": 7}
+    {"answer": "football", "total": 29},
+    {"answer": "baseball", "total": 17},
+    {"answer": "soccer", "total": 17},
+    {"answer": "swimming", "total": 13},
+    {"answer": "hockey", "total": 8},
+    {"answer": "weightlifting", "total": 6},
+    {"answer": "basketball", "total": 6},
+    {"answer": "volleyball", "total": 3}
+  ]
+}, {
+  "question": "After he gets married, what would a man hate to find out his wife doesn't like to do?",
+  "answers": [
+    {"answer": "cook", "total": 40},
+    {"answer": "make love", "total": 38},
+    {"answer": "travel", "total": 5},
+    {"answer": "shower", "total": 4},
+    {"answer": "clean/laundry", "total": 3},
+    {"answer": "cuddle all night", "total": 3},
+    {"answer": "watch sports", "total": 3},
+    {"answer": "speak", "total": 2}
+  ]
+}, {
+  "question": "We asked 100 men...? Telling a woman that she's ______ may be hazardous to your health.",
+  "answers": [
+    {"answer": "'well fed'", "total": 79},
+    {"answer": "a numskull", "total": 8},
+    {"answer": "a bad cook", "total": 4},
+    {"answer": "a bad driver", "total": 3},
+    {"answer": "an 'antique'", "total": 2},
+    {"answer": "pretty/at your job", "total": 2}
+  ]
+}, {
+  "question": "Name something a cheap guy asks his mom to do so he doesn't have to pay anyone.",
+  "answers": [
+    {"answer": "laundry/cleaning", "total": 65},
+    {"answer": "cook/bring food", "total": 15},
+    {"answer": "cut his hair", "total": 5},
+    {"answer": "babysit his kids", "total": 5},
+    {"answer": "pay his rent/bills", "total": 3},
+    {"answer": "drive him", "total": 3},
+    {"answer": "sew him clothes", "total": 3}
+  ]
+}, {
+  "question": "In hell, name something the surgeons don't do before they operate on you.",
+  "answers": [
+    {"answer": "give anesthesia", "total": 51},
+    {"answer": "wash hands", "total": 40},
+    {"answer": "pray", "total": 4},
+    {"answer": "sterilize equipment", "total": 3},
+    {"answer": "train/med shool", "total": 2}
+  ]
+}, {
+  "question": "Name a way a woman can flirt with a man without making physical contact.",
+  "answers": [
+    {"answer": "wink/eye-bang", "total": 55},
+    {"answer": "smile/giggle", "total": 22},
+    {"answer": "flip hair", "total": 5},
+    {"answer": "bit/lick lips", "total": 4},
+    {"answer": "talk/compliment", "total": 4},
+    {"answer": "phone/text", "total": 3},
+    {"answer": "dance/shake it", "total": 2},
+    {"answer": "get nekkid", "total": 2}
+  ]
+}, {
+  "question": "We asked 100 married men... tell us your wife's best feature?",
+  "answers": [
+    {"answer": "face/smile", "total": 54},
+    {"answer": "bod/breasts", "total": 17},
+    {"answer": "personality/humor", "total": 11},
+    {"answer": "mind", "total": 7},
+    {"answer": "heart/kindess", "total": 7},
+    {"answer": "cooking skills", "total": 2}
+  ]
+}, {
+  "question": "Name something a woman might like to put on her dog and her man.\n ",
+  "answers": [
+    {"answer": "lease/chain", "total": 33},
+    {"answer": "collar/harness", "total": 30},
+    {"answer": "matching clothes", "total": 20},
+    {"answer": "a muzzle", "total": 6},
+    {"answer": "a microchip", "total": 4},
+    {"answer": "jewelry", "total": 3},
+    {"answer": "cologne", "total": 2}
+  ]
+}, {
+  "question": "Name something you'd have to be really unlucky to be struck by.",
+  "answers": [
+    {"answer": "lightning", "total": 86},
+    {"answer": "car/truck", "total": 4},
+    {"answer": "airplane", "total": 4},
+    {"answer": "meteor", "total": 2},
+    {"answer": "train", "total": 2}
+  ]
+}, {
+  "question": "Name something a person might be running from.",
+  "answers": [
+    {"answer": "the law/feds", "total": 52},
+    {"answer": "an animal", "total": 15},
+    {"answer": "their past/ex", "total": 9},
+    {"answer": "debt/bills", "total": 7},
+    {"answer": "criminal", "total": 5},
+    {"answer": "marriage/commitment", "total": 4},
+    {"answer": "monster", "total": 3},
+    {"answer": "truth/self", "total": 2}
+  ]
+}, {
+  "question": "We asked 100 women... It's bad if another woman gives your man her phone number. It's worse if she writes it on what?",
+  "answers": [
+    {"answer": "him/his thigh", "total": 70},
+    {"answer": "her clothes", "total": 13},
+    {"answer": "a napkin", "total": 7},
+    {"answer": "bathroom/mirror", "total": 3},
+    {"answer": "cash/a benjamin", "total": 2},
+    {"answer": "used TP", "total": 2}
+  ]
+}, {
+  "question": "Name someone you hire to entertain who will put the \"fun\" back in \"funeral.\"",
+  "answers": [
+    {"answer": "clown", "total": 36},
+    {"answer": "comedian", "total": 21},
+    {"answer": "DJ/band", "total": 15},
+    {"answer": "magician", "total": 11},
+    {"answer": "stripper", "total": 7},
+    {"answer": "juggler", "total": 5},
+    {"answer": "quirky pastor", "total": 2}
   ]
 },
 {
-  "question": "Name something that's round and white?",
+  "question": "What expensive thing might you buy that would make your boss think she is paying you too much?",
   "answers": [
-    {"answer": "golf ball", "total": 22},
-    {"answer": "snowball", "total": 22},
-    {"answer": "pearl", "total": 6},
-    {"answer": "cotton ball", "total": 5},
-    {"answer": "marshmallow", "total": 5},
-    {"answer": "baseball", "total": 5}
+    {"answer": "new car", "total": 70},
+    {"answer": "designer purse/clothing", "total": 15},
+    {"answer": "jewlery/watch", "total": 8},
+    {"answer": "lunch", "total": 2},
+    {"answer": "motorcycle", "total": 2}
+  ]
+}, {
+  "question": "If men gave birth to babies, name a public place you'd see them breastfeeding.",
+  "answers": [
+    {"answer": "bar/nightclub", "total": 46},
+    {"answer": "sports arena", "total": 21},
+    {"answer": "park", "total": 13},
+    {"answer": "store/mall", "total": 8},
+    {"answer": "eatery/hooters", "total": 3},
+    {"answer": "men's room", "total": 2},
+    {"answer": "subway", "total": 2},
+    {"answer": "gym", "total": 2}
+  ]
+}, {
+  "question": "Your neighbor has a better Christmas light display than you. What are you going to do about it?",
+  "answers": [
+    {"answer": "nada/suck it up", "total": 61},
+    {"answer": "buy more/game on!", "total": 13},
+    {"answer": "compliment/enjoy", "total": 12},
+    {"answer": "unplug/break bulbs", "total": 7},
+    {"answer": "laugh at power bill", "total": 2},
+    {"answer": "burn house down", "total": 2}
+  ]
+}, {
+  "question": "It's the morning after a wild party. Tell me what's floating in the hot tub.",
+  "answers": [
+    {"answer": "booze/empties", "total": 38},
+    {"answer": "clothes", "total": 34},
+    {"answer": "condom", "total": 11},
+    {"answer": "turd", "total": 5},
+    {"answer": "pool toy", "total": 3},
+    {"answer": "bubbles", "total": 3},
+    {"answer": "dead body", "total": 2}
+  ]
+}, {
+  "question": "Name something a man does on a date if he's an old-fashioned guy.",
+  "answers": [
+    {"answer": "opens doors", "total": 64},
+    {"answer": "pays", "total": 17},
+    {"answer": "pulls out chair", "total": 7},
+    {"answer": "buys flowers", "total": 6},
+    {"answer": "g'night kiss/cheek", "total": 3}
+  ]
+}, {
+  "question": "Name something a man looks for in a wife if he wants to be happy the rest of his life.",
+  "answers": [
+    {"answer": "delish cooking", "total": 33},
+    {"answer": "sweet/loving", "total": 28},
+    {"answer": "funny", "total": 17},
+    {"answer": "smokin' face", "total": 5},
+    {"answer": "maniac in the sack", "total": 4},
+    {"answer": "$$$rich", "total": 4},
+    {"answer": "loyal", "total": 3},
+    {"answer": "muteness", "total": 2}
+  ]
+}, {
+  "question": "Name something that's fun to pop.",
+  "answers": [
+    {"answer": "bubble wrap", "total": 31},
+    {"answer": "balloon", "total": 29},
+    {"answer": "bubblegum", "total": 18},
+    {"answer": "zit", "total": 13},
+    {"answer": "bottle/champagne", "total": 4},
+    {"answer": "fingers/knuckles", "total": 2}
+  ]
+}, {
+  "question": "Name a place you might run into your pastor that you'd both keep it a secret.",
+  "answers": [
+    {"answer": "strip club", "total": 38},
+    {"answer": "bar/nightclub", "total": 37},
+    {"answer": "adult shop", "total": 9},
+    {"answer": "casino", "total": 7},
+    {"answer": "liquor store", "total": 5},
+    {"answer": "skin flick", "total": 2}
+  ]
+}, {
+  "question": "Name a reason people take out a loan?",
+  "answers": [
+    {"answer": "buy house", "total": 55},
+    {"answer": "buy car", "total": 24},
+    {"answer": "education", "total": 8},
+    {"answer": "pay debt", "total": 4},
+    {"answer": "start a business", "total": 3},
+    {"answer": "gambling", "total": 2}
   ]
 }]

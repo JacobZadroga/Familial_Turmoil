@@ -53,23 +53,81 @@ class Game:
                 })
         self.audienceAnswerList = lst
 
+    def calcHostAnswerList(self):
+        print(self.questions)
+        lst = []
+        for ans in self.questions[self.currentQuestion].boardAnswers:
+            lst.append({
+                'exposed': ans.exposed,
+                'answer': ans.answer,
+                'count': ans.count
+            })
+        return lst
+
     def revealAnswer(self, answerNum):
-        ans = self.questions[self.currentQuestion].boardAnswers[answerNum]
+        if(int(answerNum) >= len(self.questions[self.currentQuestion].boardAnswers)):
+            return
+        ans = self.questions[self.currentQuestion].boardAnswers[int(answerNum)]
         if not ans.exposed:
             ans.exposed = True
             self.bank = self.bank + ans.count
             self.calcAudienceAnswerList()
 
     def addBankToTeamScore(self, team):
-        if(team == 1):
+        if(int(team) == 0):
             self.teamOneScore += self.bank
         else:
             self.teamTwoScore += self.bank
-        self.bank = 0;
+        self.bank = 0
+        self.teamTwoX = 0
+        self.teamOneX = 0
+        return json.dumps({
+            'teamOneScore': self.teamOneScore,
+            'teamTwoScore': self.teamTwoScore,
+            'bank': self.bank
+        })
+
+    def changeTeamScore(self, team, score):
+        if(int(team) == 0):
+            self.teamOneScore = score
+        else:
+            self.teamTwoScore = score
+        return json.dumps({
+            'teamOneScore': self.teamOneScore,
+            'teamTwoScore': self.teamTwoScore
+        })
+
+
+    def changeTeamX(self, team, add):
+        if(int(team) == 0):
+            if((add > 0 and self.teamOneX < 3) or (add < 0 and self.teamOneX > 0)):
+                self.teamOneX += add
+        else:
+            if((add > 0 and self.teamTwoX < 3) or (add < 0 and self.teamTwoX > 0)):
+                self.teamTwoX += add
+        return json.dumps({
+            'teamOneX': self.teamOneX,
+            'teamTwoX': self.teamTwoX
+        })
+
 
     def progressQuestion(self):
-        self.currentQuestion += 1
-        self.calcAudienceAnswerList()
+        if(self.currentQuestion < len(self.questions)-1):
+            self.bank = 0
+            self.currentQuestion += 1
+            self.calcAudienceAnswerList()
+
+    def regressQuestion(self):
+        if(self.currentQuestion > 0):
+            self.currentQuestion -= 1
+            self.calcAudienceAnswerList()
+
+
+    def setBank(self, bank):
+        self.bank = int(bank);
+        return json.dumps({
+            'bank': self.bank
+        })
 
     def audienceState(self):
         gameMap = {
@@ -78,7 +136,18 @@ class Game:
             'teamTwoScore': self.teamTwoScore,
             'teamTwoX': self.teamTwoX,
             'bank': self.bank,
-            'question': self.questions[self.currentQuestion].question,
             'answers': self.audienceAnswerList
+        }
+        return json.dumps(gameMap)
+
+    def hostState(self):
+        gameMap = {
+            'teamOneScore': self.teamOneScore,
+            'teamOneX': self.teamOneX,
+            'teamTwoScore': self.teamTwoScore,
+            'teamTwoX': self.teamTwoX,
+            'bank': self.bank,
+            'question': self.questions[self.currentQuestion].question,
+            'answers': self.calcHostAnswerList()
         }
         return json.dumps(gameMap)

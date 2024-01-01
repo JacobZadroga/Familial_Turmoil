@@ -8,45 +8,272 @@
     }
     /* Set additional styling options for the columns */
     .column {
-    float: left;
+        float: left;
     }
 
     /* Set width length for the left, right and middle columns */
     .left {
-    width: 20%;
+        width: 20%;
     }
 
     .middle {
-    width: 60%;
+        width: 60%;
     }
 
     .right {
-    width: 20%;
+        width: 20%;
+    }
+
+    .answerpadding {
+        width: 20%;
+        background-color: DarkBlue;
+    }
+
+    .teamname {
+        font-family: Trebuchet MS;
+        font-size: 1.5vw;
+    }
+
+    .teamscore {
+        padding: 10px;
+        font-family: Trebuchet MS;
+        font-size: 5.5vw;
+        font-weight: bold;
+        display: flex;
+        justify-content: center; /* Align horizontal */
+        align-items: center;
+    }
+
+    .bankscore {
+        background-color: DarkBlue;
+        text-align: center;
+        height: 15vh;
+        font-family: Trebuchet MS;
+        font-size: 5vw;
+        color: White;
+        font-weight: bold;
+        display: flex;
+        justify-content: center; /* Align horizontal */
+        align-items: center;
+    }
+
+    .topimage {
+        height: 15vh;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ximage {
+        padding: 10px;
+        height: 11vh;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ximageH {
+        padding: 10px;
+        height: 11vh;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.0;
+    }
+
+    .xcontainer {
+        padding: 20px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        background-color: DarkBlue;
+        padding: 12px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(0, 0, 0, 1);
+        height: 13vh;
+        font-family: Trebuchet MS;
+        font-weight: bold;
+        font-size: 4vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 20px;
+    }
+
+    .anscount {
+        background-color: Gray;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 5.5vh;
+    }
+
+    .anscountH {
+        background-color: Gray;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 5.5vh;
+        opacity: 0;
     }
 
     .row:after {
-    content: "";
-    display: table;
-    clear: both;
+        content: "";
+        display: table;
+        clear: both;
     }
     </style>
- </head>
-<body style="background-color:DodgerBlue;text-align:center">
-    <img src="../static/images/logo.png">
-    <h1>Familial Turmoil</h1>
+
+    <script>
+        function getGameState() {
+            console.log("Getting gameState");
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../gamestate");
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+
+                document.getElementById("teamOneScore").innerHTML = response.teamOneScore;
+                document.getElementById("teamTwoScore").innerHTML = response.teamTwoScore;
+                document.getElementById("bank").innerHTML = response.bank;
+
+                if(response.teamOneX <= 0) {
+                    document.getElementById("t1x1").className = "ximageH";
+                    document.getElementById("t1x2").className = "ximageH";
+                    document.getElementById("t1x3").className = "ximageH";
+                } else if(response.teamOneX == 1) {
+                    document.getElementById("t1x1").className = "ximage";
+                    document.getElementById("t1x2").className = "ximageH";
+                    document.getElementById("t1x3").className = "ximageH";
+                } else if(response.teamOneX == 2) {
+                    document.getElementById("t1x1").className = "ximage";
+                    document.getElementById("t1x2").className = "ximage";
+                    document.getElementById("t1x3").className = "ximageH";
+                } else {
+                    document.getElementById("t1x1").className = "ximage";
+                    document.getElementById("t1x2").className = "ximage";
+                    document.getElementById("t1x3").className = "ximage";
+                }
+
+                if(response.teamTwoX <= 0) {
+                    document.getElementById("t2x1").className = "ximageH";
+                    document.getElementById("t2x2").className = "ximageH";
+                    document.getElementById("t2x3").className = "ximageH";
+                } else if(response.teamTwoX == 1) {
+                    document.getElementById("t2x1").className = "ximage";
+                    document.getElementById("t2x2").className = "ximageH";
+                    document.getElementById("t2x3").className = "ximageH";
+                } else if(response.teamTwoX == 2) {
+                    document.getElementById("t2x1").className = "ximage";
+                    document.getElementById("t2x2").className = "ximage";
+                    document.getElementById("t2x3").className = "ximageH";
+                } else {
+                    document.getElementById("t2x1").className = "ximage";
+                    document.getElementById("t2x2").className = "ximage";
+                    document.getElementById("t2x3").className = "ximage";
+                }
+
+                var numOfAnswers = response.answers.length;
+
+                for(let i = 1; i <= numOfAnswers; i++) {
+                    if(response.answers[i-1].answer == null) {
+                        document.getElementById("ans" + i).innerHTML = i;
+                        document.getElementById("count" + i).className = "anscountH";
+                    } else {
+                        document.getElementById("ans" + i).innerHTML = response.answers[i-1].answer
+                        document.getElementById("count" + i).className = "anscount";
+                        document.getElementById("count" + i).innerHTML = response.answers[i-1].count;
+                    }
+                }
+
+                 //For the rest of the answers we want to display nothing
+                for(let i = numOfAnswers + 1; i <= 8; i++) {
+                    document.getElementById("ans" + i).innerHTML = "";
+                    document.getElementById("count" + i).className = "anscountH";
+                }
+            }
+            }
+        }
+
+        function shortPoll() {
+            console.log("Running short-polling");
+            setInterval(getGameState, 1000);
+        }
+
+        //getGameState();
+        shortPoll();
+    </script>
+</head>
+<body style="background-color:DodgerBlue;text-align:center;height: 100%;overflow-y: hidden;">
+    <img src="../static/images/logo.png" class="topimage">
 
 
     <div class="row">
         <div class="column left">
-            <h2>{{teamOneName}}</h2>
-            <p>Data..</p>
+            <div class="xcontainer">
+                <img id="t1x1" src="../static/images/x.png" class="ximageH">
+                <img id="t1x2" src="../static/images/x.png" class="ximageH">
+                <img id="t1x3" src="../static/images/x.png" class="ximageH">
+            </div>
+            <div class="teamname">{{teamOneName}}</div>
+            <div id="teamOneScore" class="teamscore">0</div>
         </div>
         <div class="column middle">
-            <p> </p>
+            <div id="bank" class="bankscore">
+            </div>
+
+            <br>
+
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div id="ans1">1</div>
+                    <div id="count1" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans5">2</div>
+                    <div id="count5" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans2">3</div>
+                    <div id="count2" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans6">4</div>
+                    <div id="count6" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans3">5</div>
+                    <div id="count3" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans7">6</div>
+                    <div id="count7" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans4">7</div>
+                    <div id="count4" class="anscountH">0</div>
+                </div>
+                <div class="grid-item">
+                    <div id="ans8">8</div>
+                    <div id="count8" class="anscountH">0</div>
+                </div>
+            </div>
         </div>
         <div class="column right">
-            <h2>{{teamTwoName}}</h2>
-            <p>Data..</p>
+            <div class="xcontainer">
+                <img id="t2x1" src="../static/images/x.png" class="ximageH">
+                <img id="t2x2" src="../static/images/x.png" class="ximageH">
+                <img id="t2x3" src="../static/images/x.png" class="ximageH">
+            </div>
+            <div class="teamname">{{teamTwoName}}</div>
+            <div id="teamTwoScore" class="teamscore">0</div>
         </div>
     </div>
 </body>

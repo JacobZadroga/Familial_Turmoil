@@ -10,6 +10,7 @@ class BoardAnswer:
     def __repr__(self):
         return self.__str__()
 
+
 class BoardQuestion:
     def __init__(self, question, boardAnswers):
         self.question = question

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BuzzIn</title>
+    <style>
+        .qbutton {
+        background-color: IndianRed;
+        height: 90vh;
+        width: 100%;
+        color: Black;
+        font-size: 10vw;
+        font-weight: bold;
+    }
+    </style>
+    <script>
+        function buzzIn() {
+
+            var team = document.getElementById("b").value
+            console.log(team)
+
+            // Request
+            var request = new XMLHttpRequest();
+            request.open("GET", "../buzzInMethod?t=" + team);
+            request.send();
+
+            // Response
+            request.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Sent request")
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id="b" onclick = "buzzIn()" type="button" class="qbutton" value="{{team}}">
+</body>
+</html>
