@@ -22,7 +22,10 @@ eb create eb-ft
 
 ## Clean Up
 Delete the EB instance
+
 EC2 Instance
+
 S3 Bucket
+
 CloudWatch Logs
 
